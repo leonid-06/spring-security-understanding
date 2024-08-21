@@ -43,3 +43,11 @@ It makes sense, I can do it this way, but for some reason it doesn't work.
 <img src="src/main/resources/static/part3-changes.png">
 
 4) In this topic, Let's try to create custom AuthProvider (consist and manage user-details and pass-encoder)
+5) Today, we impl relly custom user-details-service (not just modified InMemoryUserDetailsService, but implemented own class ... impl UDS).
+   
+Also let's highlight a few best practice:
+* Сreate UserDetailsServiceImpl and PasswordEncoder in one class, and mark its @Component
+* In AuthenticationProviderImpl don't forget to check the password through the passport-encoder-bean, but not just through row.equal(income) method
+* While user creating don't forget and encode passwords
+
+<img src="src/main/resources/static/part5-changes.png">
