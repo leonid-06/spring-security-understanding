@@ -1,6 +1,6 @@
 # spring-security-understanding
 
-In this lesson we implemented basic project with authentication that comes out of the box Spring Security
+1) In this lesson we implemented basic project with authentication that comes out of the box Spring Security
 
 We have controller `GET http://localhost:8080/hello` and `default configuration of Spring Security`
 
@@ -24,3 +24,17 @@ Get `dXNlcjo5M2EwMWNmMC03OTRiLTRiOTgtODZlZi01NDg2MGYzNmY3ZjM=`
 `curl -H "Authorization: Basic dXNlcjo5M2EwMWNmMC03OTRiLTRiOTgtODZlZi01NDg2MGYzNmY3ZjM="  localhost:8080/hello`
 
 <img src="src/main/resources/static/spring-sec-class-design.png">
+
+2) In this lesson we will slightly override `out of box logic` added custom UserDetailService implementation (InMemoryUserDetailsManager) and added custom PasswordEncoder implementation
+
+We created user who has a set of credentials (username and password)
+
+Added the user to be managed by our implementation of UserDetailsService
+
+Define a bean of the type PasswordEncoder that our application can use to verify a given password with the one stored and managed by UserDetailsService
+
+`curl -iu leo:pass http://localhost:8080/hello` 200 OK
+
+<img src="src/main/resources/static/part2-changes.png">
+
+
