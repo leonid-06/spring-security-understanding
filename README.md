@@ -37,4 +37,7 @@ Define a bean of the type PasswordEncoder that our application can use to verify
 
 <img src="src/main/resources/static/part2-changes.png">
 
+3) In this part we will customize the handling of authentication and authorization, by defining a bean of type SecurityFilterChain
 
+It makes sense, I can do it this way, but for some reason it doesn't work.
+<img src="src/main/resources/static/part3-changes.png">
