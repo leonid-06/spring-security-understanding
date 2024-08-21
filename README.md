@@ -41,3 +41,5 @@ Define a bean of the type PasswordEncoder that our application can use to verify
 
 It makes sense, I can do it this way, but for some reason it doesn't work.
 <img src="src/main/resources/static/part3-changes.png">
+
+4) In this topic, Let's try to create custom AuthProvider (consist and manage user-details and pass-encoder)
