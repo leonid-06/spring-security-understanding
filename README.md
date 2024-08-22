@@ -46,8 +46,26 @@ It makes sense, I can do it this way, but for some reason it doesn't work.
 5) Today, we impl relly custom user-details-service (not just modified InMemoryUserDetailsService, but implemented own class ... impl UDS).
    
 Also let's highlight a few best practice:
-* Сreate UserDetailsServiceImpl and PasswordEncoder in one class, and mark its @Component
+* Create UserDetailsServiceImpl and PasswordEncoder in one class, and mark its @Component
 * In AuthenticationProviderImpl don't forget to check the password through the passport-encoder-bean, but not just through row.equal(income) method
 * While user creating don't forget and encode passwords
 
 <img src="src/main/resources/static/part5-changes.png">
+
+6) In this part we will connect our "Security" with "Data Base" via JdbcUserDetailsManager
+
+For implementation, we will need
+* Database driver and SpringJDBC dep
+* Create DDL (schema.sql) and DML(data.sql) files in /resources
+* Configure app.prop
+  <img src="src/main/resources/static/part6-changes-1.png">
+* Implements CustomJDBCManager and run.
+
+_In fact, overriding the set... methods is not necessary. This should be done if the column names in your DB do not match the names username password enabled, authority_
+We can just write that
+```  
+@Bean
+UserDetailsService userDetailsService(DataSource dataSource){
+return new JdbcUserDetailsManager(dataSource);
+}
+```
