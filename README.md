@@ -82,3 +82,14 @@ if we don't send the token we'll get 403, because the server received the form d
 And 200 otherwise
 
 <img src="src/main/resources/static/within-csrf-token.png">
+
+
+8) 
+CORS - browser protection mitigation. Since the browser does not allow making a request to another Origin, we can change this with CORS.
+
+Origin is the name-fact that the computer is unique, that is, its protocol domain and port are unique if they are the same for two origins, then two origins are the same.
+
+Let's start from the beginning: what happens when you make a cross-origin call if you haven't configured CORS in your application? When an application makes a request, it expects the response to have an Access-Control-Allow-Origin header containing the origins accepted by the server. 
+If this doesn't happen, as is the case with Spring Security's default behavior, the browser won't accept the response
+
+For simple requests, the browser sends the original request directly to the server. The browser rejects the response if the server doesn't allow the origin. In some cases, the browser sends a preflight request to check if the server accepts the origin. If the preflight request is successful, the browser sends the original request
