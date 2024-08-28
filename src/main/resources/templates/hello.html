@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/hello" method="post">
+    <label> Type message:
+        <input type="text" name="msg">
+    </label>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

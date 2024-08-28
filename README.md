@@ -69,3 +69,16 @@ UserDetailsService userDetailsService(DataSource dataSource){
 return new JdbcUserDetailsManager(dataSource);
 }
 ```
+
+7) csrf-understanding
+
+CSRF tokens work well in an architecture where the **same server** is responsible **for both the frontend and the backend**, mainly for its simplicity. But CSRF tokens don’t work well when the client is independent of the backend solution it consumes.
+
+So this version demonstrates the work of csrf on such architecture.
+
+if we don't send the token we'll get 403, because the server received the form data without a token
+<img src="src/main/resources/static/without-csrf-token.png">
+
+And 200 otherwise
+
+<img src="src/main/resources/static/within-csrf-token.png">
